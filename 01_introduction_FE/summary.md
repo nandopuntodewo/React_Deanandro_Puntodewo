@@ -1,4 +1,4 @@
-# Summary Introductionn to Front End
+# Summary Introduction to Front End
 
 Pada Introduction to FE saya mempelajari beberapa hal diantaranya:
 1. apa itu Front end
