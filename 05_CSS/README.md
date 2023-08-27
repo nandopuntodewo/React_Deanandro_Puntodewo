@@ -4,9 +4,9 @@ CSS meruapak singkata dari cascading style sheet. sebuah bahasa yang biasa digun
 # Cara menambahkan CSS
 Ada 3 cara untuk menambahkan file CSS yaitu:
 
-External CSS cara ini digunakan dengan menambah file css baru biasanya dinamai dengan style.css lalu menghubungkan file HTML dan CSS dengan tag link
-Internal CSS Cara ini dilakukan dengan menambah tag style pada bagian body atau head dalam suatu file HMTL
-Inline CSS cara ini dilakukan dengan langsung manbah tag style serta atribut CSS dalam sebuah elemen HTML. biasanya cara ini digunakan untuk elemen tunggal pada HTML
+. External CSS cara ini digunakan dengan menambah file css baru biasanya dinamai dengan style.css lalu menghubungkan file HTML dan CSS dengan tag link
+. Internal CSS Cara ini dilakukan dengan menambah tag style pada bagian body atau head dalam suatu file HMTL
+. Inline CSS cara ini dilakukan dengan langsung manbah tag style serta atribut CSS dalam sebuah elemen HTML. biasanya cara ini digunakan untuk elemen tunggal pada HTML
 
 # Syntax HTML tediri dari berapa bagian
 Selector
