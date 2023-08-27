@@ -9,5 +9,5 @@ Ada 3 cara untuk menambahkan file CSS yaitu:
 3. Inline CSS cara ini dilakukan dengan langsung manbah tag style serta atribut CSS dalam sebuah elemen HTML. biasanya cara ini digunakan untuk elemen tunggal pada HTML
 
 # Syntax HTML tediri dari berapa bagian
-Selector
-Declaration (Property dan Value) contoh : h1 {color: pink; font-size 15px} setiap declaration CSS dipisahkan dengan semicolon
+1. Selector
+2. Declaration (Property dan Value) contoh : h1 {color: pink; font-size 15px} setiap declaration CSS dipisahkan dengan semicolon
