@@ -1,3 +1,5 @@
+# Apa itu Javascript
+
 JavaScript adalah sebuah bahasa pemrograman yang digunakan untuk meningkatkan interaktivitas dan dinamika dalam sebuah situs web. Dengan JavaScript, Anda dapat mengendalikan elemen-elemen pada halaman web, menangani peristiwa (event), dan memanipulasi data.
 
 # Alasan untuk memulai belajar JavaScript adalah sebagai berikut:
