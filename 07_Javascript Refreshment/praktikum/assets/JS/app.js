@@ -1,5 +1,5 @@
 
-const form = document.getElementById('form')
+const form = document.getElementById('formCreateProduct')
 
 
 form.addEventListener('submit', (e) => {
