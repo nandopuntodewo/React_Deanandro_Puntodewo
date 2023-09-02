@@ -1,45 +1,56 @@
-// validation.js
 
-// Fungsi untuk menampilkan pesan alert
-function showAlert(message) {
-    alert(message);
-  }
-  
-  // Fungsi untuk mengaktifkan atau menonaktifkan tombol Submit
-  function toggleSubmitButton() {
-    const productName = document.getElementById("productName").value;
-    const productPrice = document.getElementById("productPrice").value;
-  
-    // Validasi Product Name tidak boleh kosong dan tidak boleh lebih dari 25 karakter
-    if (productName === "" || productName.length > 25) {
-      showAlert("Product Name must not be empty and must not exceed 25 characters.");
-      return false; // Hentikan submit jika validasi gagal
+const form = document.getElementById('form')
+
+
+form.addEventListener('submit', (e) => {
+    let specialchars = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/;
+    const productName = document.getElementById('productName')
+    const productPrice = document.getElementById('productPrice')
+    const option = document.getElementById('productCategory')
+    const formFile = document.getElementById('formFile')
+    const Description = document.getElementById('Description')
+    var radio1 = document.getElementById('Brandnew')
+    var radio2 = document.getElementById('Secondhand')
+    var radio3 = document.getElementById('Refurbished')
+
+
+    if (productName.value === "" || productName.value == null){
+        alert ("Please enter a valid product name");
+        return false;
+    }else
+
+    if (productName.value.length > 25 || productName.value.length > 10){
+        alert ("Last Name must not exceed 25 characters.");
+        return false;
+    }else
+
+    if (productName.value.match(specialchars)) {
+        alert("Prodcut name must not contain symbols")
+        return false;
+    }else
+
+    if (option.value == ""){
+        alert ("Product Category field must be filled in");
+        return false;
+    }else
+
+    if (formFile.files.length === 0 ){ 
+        alert("Product image field must be filled in")
+        return false;
+    }else
+
+    if (radio1.checked !== true && radio2.checked !== true && radio3.checked !== true){
+        alert ("Product freshness field must be filled in")
+        return false;
+    }else
+
+    if (Description.value === "" || Description.value == null){
+        alert("Additional Description field must be filled in")
+        return false
+    }else
+
+    if (productPrice.value === "" || productPrice.value == null){
+        alert("Please enter a valid product price")
+        return false;
     }
-  
-    // Validasi Product Price tidak boleh kosong
-    if (productPrice === "") {
-      showAlert("Please enter a valid Product Price.");
-      return false; // Hentikan submit jika validasi gagal
-    }
-  
-    return true; // Lanjutkan submit jika semua validasi berhasil
-  }
-  
-  // Menambahkan event listener pada form untuk meng-handle submit
-  document.getElementById("formCreateProduct").addEventListener("submit", function (e) {
-    e.preventDefault(); // Mencegah form untuk langsung submit
-    const isValid = toggleSubmitButton(); // Validasi form
-    if (isValid) {
-      // Jika form valid, tampilkan data dalam alert
-      const productName = document.getElementById("productName").value;
-      const productCategory = document.getElementById("productCategory").value;
-      const productStatus = document.querySelector("input[name='productStatus']:checked").value;
-      const additionalDescription = document.getElementById("exampleFormControlTextarea1").value;
-      const productPrice = document.getElementById("productPrice").value;
-  
-      const alertMessage = `Product Name: ${productName}\nProduct Category: ${productCategory}\nProduct Status: ${productStatus}\nAdditional Description: ${additionalDescription}\nProduct Price: $${productPrice}`;
-  
-      showAlert(alertMessage);
-    }
-  });
-  
+})
