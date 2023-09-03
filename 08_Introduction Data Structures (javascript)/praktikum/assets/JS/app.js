@@ -124,10 +124,7 @@ document.getElementById('deleteButton').addEventListener('click', (e) => deleteL
 
 
 // Fungsi untuk melakukan pencarian pada tabel
-function searchProduct(event) {
-    if (event) {
-        event.preventDefault(); // Mencegah tombol "delete" mengirimkan permintaan HTTP
-    }
+function searchProduct() {
     const searchInput = document.getElementById('searchInput').value.toLowerCase(); // Mendapatkan nilai input pencarian dan mengonversi menjadi lowercase
     const tableBody = document.getElementById('productTableBody');
     const rows = tableBody.getElementsByTagName('tr'); // Mengambil semua baris dalam tabel
