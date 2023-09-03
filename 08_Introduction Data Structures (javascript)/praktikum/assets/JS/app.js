@@ -151,5 +151,5 @@ function searchProduct() {
 }
 // Menambahkan event listener pada input pencarian untuk mendeteksi perubahan nilai
 document.getElementById('searchInput').addEventListener('input', function () {
-    searchProduct(); // Menjalankan fungsi pencarian tanpa alert
+    searchProduct(); 
 });
