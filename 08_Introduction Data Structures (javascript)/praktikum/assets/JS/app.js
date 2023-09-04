@@ -54,7 +54,7 @@ const products = [];
 
 // Fungsi untuk menangani pengiriman formulir
 function handleSubmit(event) {
-    event.preventDefault(); // Mencegah formulir mengirimkan permintaan HTTP
+    event.preventDefault(); 
 
     // Mendapatkan nilai dari input
     const productName = document.getElementById('productName').value;
@@ -106,7 +106,7 @@ function handleSubmit(event) {
 // Fungsi untuk menghapus produk terakhir
 function deleteLastProduct(event) {
     if (event) {
-        event.preventDefault(); // Mencegah tombol "delete" mengirimkan permintaan HTTP
+        event.preventDefault(); 
     }
     
     if (products.length > 0) {
