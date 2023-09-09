@@ -24,7 +24,7 @@ Beberapa prinsip penting dalam Clean Code adalah:
 
 - **Fungsi yang Pendek**: Fungsi harus singkat dan melakukan satu tugas dengan baik.
 
-- **Kepatuhan Terhadap Konvensi Koding**: Ikuti konvensi penulisan kode yang disepakati dalam bahasa pemrograman yang Anda gunakan.
+- **Kepatuhan Terhadap Konvensi Koding**: Ikuti konvensi penulisan kode yang disepakati dalam bahasa pemrograman yang kita gunakan.
 
 - **Kode yang Tidak Berulang**: Hindari duplikasi kode. Gunakan abstraksi dan fungsi untuk menghindari pengulangan.
 
@@ -32,9 +32,9 @@ Beberapa prinsip penting dalam Clean Code adalah:
 
 ## Bagaimana Menerapkan Clean Code?
 
-Untuk menerapkan Clean Code, Anda bisa:
+Untuk menerapkan Clean Code, kita bisa:
 
-- **Mengikuti Pedoman**: Mengikuti pedoman penulisan kode yang berlaku untuk bahasa pemrograman yang Anda gunakan.
+- **Mengikuti Pedoman**: Mengikuti pedoman penulisan kode yang berlaku untuk bahasa pemrograman yang kita gunakan.
 
 - **Refaktor Kode**: Terus-menerus memperbaiki dan menyempurnakan kode yang sudah ada.
 
@@ -44,4 +44,4 @@ Untuk menerapkan Clean Code, Anda bisa:
 
 ---
 
-Dengan menerapkan prinsip-prinsip Clean Code, Anda dapat meningkatkan kualitas dan keberlanjutan kode Anda serta membuat pengembangan perangkat lunak lebih efisien.
+Dengan menerapkan prinsip-prinsip Clean Code, kita dapat meningkatkan kualitas dan keberlanjutan kode kita serta membuat pengembangan perangkat lunak lebih efisien.
