@@ -24,9 +24,3 @@ npx create-react-app [nama project]
 ```
 
 Alternatifnya, Anda dapat mencoba Vite, alat pengembangan yang lebih cepat daripada CRA.
-
-Dengan React, Anda dapat membuat UI interaktif dengan mudah. Untuk panduan lebih lanjut, baca [dokumentasi resmi React](https://reactjs.org/).
-
----
-
-Pastikan Anda telah menginstal Node.js dan alat pengembangan yang dibutuhkan sebelum memulai.
