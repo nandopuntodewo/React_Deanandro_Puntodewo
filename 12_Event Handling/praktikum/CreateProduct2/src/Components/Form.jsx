@@ -9,13 +9,54 @@ export default function Form({ addData }) {
   const [productPrice, setProductPrice] = useState("");
   const specialchars = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/;
 
+  const [isProductNameValid, setIsProductNameValid] = useState(true);
+
+  // State untuk menyimpan pesan kesalahan
+  const [productNameError, setProductNameError] = useState("");
+
+  function handleProductNameChange(event) {
+    const value = event.target.value;
+    setProductName(value);
+
+    // Validasi panjang Product Name
+    if (value.length > 25) {
+      setProductNameError("Product Name must not exceed 25 characters.");
+    } else {
+      setProductNameError("");
+    }
+  }
+
+  // State untuk menyimpan nilai random number
+  const [randomNumber, setRandomNumber] = useState(null);
+  const [isGenerateButtonClicked, setIsGenerateButtonClicked] = useState(false);
+
+  // Fungsi untuk menghasilkan random number dan menampilkannya di console
+  function generateRandomNumber() {
+    setIsGenerateButtonClicked(true);
+    const random = Math.floor(Math.random() * 100); // Anda bisa mengganti 100 dengan batas angka yang Anda inginkan
+    console.log("Random Number:", random);
+    setRandomNumber(random);
+  }
+
   function handleValidation() {
-    if (productName.length == 0) {
-      alert("Harap masukkan nama produk yang valid");
-    } else if (productName.length > 25) {
-      alert("Nama produk tidak boleh lebih dari 25 karakter");
-    } else if (productName.match(specialchars)) {
-      alert("Nama produk tidak boleh mengandung simbol");
+    if (isGenerateButtonClicked) {
+      return true; // Jika tombol Generate Random Number ditekan, abaikan validasi
+    }
+    // Validasi Lainnya
+    if (productName.length === 0) {
+      setProductNameError("Please enter a valid product name.");
+      setIsProductNameValid(false); // Menandakan bahwa Product Name tidak valid
+      return false;
+    }
+    if (productName.length > 25) {
+      setProductNameError("Product Name must not exceed 25 characters.");
+      setIsProductNameValid(false); // Menandakan bahwa Product Name tidak valid
+      return false;
+    }
+    if (productName.match(specialchars)) {
+      setProductNameError("Product Name cannot contain special characters.");
+      setIsProductNameValid(false); // Menandakan bahwa Product Name tidak valid
+      return false;
     } else if (productcategory.length == 0) {
       alert("Kategori produk harus diisi");
     } else if (productImage.length == 0) {
@@ -33,54 +74,53 @@ export default function Form({ addData }) {
 
   function handleSubmit(event) {
     event.preventDefault();
-  
+
     if (!handleValidation()) {
       return;
     }
-  
-    // Membuat objek data baru
-    const newData = {
-      productName: productName,
-      productCategory: productcategory,
-      productImage: productImage,
-      productFreshness: productFreshness,
-      productDesc: productDesc,
-      productPrice: productPrice,
-    };
-  
-    // Menambahkan data baru ke dalam tabel
-    const tableBody = document.getElementById("productTableBody");
-    const newRow = tableBody.insertRow();
-  
-    // Menambahkan data ke dalam sel-sel tabel
-    const cellIndex = newRow.insertCell(0);
-    const cellName = newRow.insertCell(1);
-    const cellCategory = newRow.insertCell(2);
-    const cellImage = newRow.insertCell(3);
-    const cellFreshness = newRow.insertCell(4);
-    const cellDescription = newRow.insertCell(5);
-    const cellPrice = newRow.insertCell(6);
-  
-    // Mengisi data ke dalam sel-sel tabel
-    cellIndex.innerHTML = tableBody.rows.length; // Nomor urut
-    cellName.innerHTML = productName;
-    cellCategory.innerHTML = productcategory;
-    cellImage.innerHTML = `<img src="${productImage}" alt="${productName}" width="50">`;
-    cellFreshness.innerHTML = productFreshness;
-    cellDescription.innerHTML = productDesc;
-    cellPrice.innerHTML = productPrice;
-  
-    // Mengosongkan formulir setelah data ditambahkan
-    setProductName("");
-    setProductCategory("");
-    setProductImage("");
-    setProductFreshness("");
-    setProductDesc("");
-    setProductPrice("");
-  
-    event.target.reset();
-  
-  
+    if (!isGenerateButtonClicked) {
+      // Membuat objek data baru
+      const newData = {
+        productName: productName,
+        productCategory: productcategory,
+        productImage: productImage,
+        productFreshness: productFreshness,
+        productDesc: productDesc,
+        productPrice: productPrice,
+      };
+
+      // Menambahkan data baru ke dalam tabel
+      const tableBody = document.getElementById("productTableBody");
+      const newRow = tableBody.insertRow();
+
+      // Menambahkan data ke dalam sel-sel tabel
+      const cellIndex = newRow.insertCell(0);
+      const cellName = newRow.insertCell(1);
+      const cellCategory = newRow.insertCell(2);
+      const cellImage = newRow.insertCell(3);
+      const cellFreshness = newRow.insertCell(4);
+      const cellDescription = newRow.insertCell(5);
+      const cellPrice = newRow.insertCell(6);
+
+      // Mengisi data ke dalam sel-sel tabel
+      cellIndex.innerHTML = tableBody.rows.length; // Nomor urut
+      cellName.innerHTML = productName;
+      cellCategory.innerHTML = productcategory;
+      cellImage.innerHTML = `<img src="${productImage}" alt="${productName}" width="50">`;
+      cellFreshness.innerHTML = productFreshness;
+      cellDescription.innerHTML = productDesc;
+      cellPrice.innerHTML = productPrice;
+
+      // Mengosongkan formulir setelah data ditambahkan
+      setProductName("");
+      setProductCategory("");
+      setProductImage("");
+      setProductFreshness("");
+      setProductDesc("");
+      setProductPrice("");
+
+      event.target.reset();
+    }
   }
 
   return (
@@ -94,11 +134,17 @@ export default function Form({ addData }) {
             </label>
             <input
               type="text"
-              className="form-control"
+              className={`form-control ${
+                isProductNameValid ? "" : "is-invalid"
+              }`}
               id="productName"
               style={{ width: 280 }}
-              onChange={(e) => setProductName(e.target.value)}
+              value={productName}
+              onChange={handleProductNameChange}
             />
+            {productNameError && (
+              <p className="text-danger">{productNameError}</p>
+            )}
           </div>
           <div className="mt-lg-5">
             <label htmlFor="" className="form-label">
@@ -199,6 +245,15 @@ export default function Form({ addData }) {
           <div className="d-flex justify-content-center mt-lg-5">
             <button className="btn btn-primary w-50" type="submit">
               Submit
+            </button>
+          </div>
+          {/* Tombol Generate Random Number */}
+          <div className="d-flex justify-content-center mt-lg-5">
+            <button
+              className="btn btn-success w-50"
+              onClick={generateRandomNumber}
+            >
+              Generate Random Number
             </button>
           </div>
           <div className="mt-lg-5">

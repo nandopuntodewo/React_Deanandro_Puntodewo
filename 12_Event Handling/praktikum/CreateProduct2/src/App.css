@@ -91,6 +91,22 @@
   color: #444;
 }
 
+.is-invalid {
+  border: 1px solid red;
+}
+
+/* CSS untuk menampilkan ikon error */
+.error-icon::before {
+  content: "\f06a"; /* Unicode untuk ikon font-awesome 'times' (X) */
+  font-family: FontAwesome; /* Font yang mengandung ikon */
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: red; /* Warna ikon error */
+  pointer-events: none; /* Ikon tidak bisa di klik */
+}
+
 .text-input {
   width: 636px;
   height: 42px;
