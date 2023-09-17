@@ -1,10 +1,92 @@
-import React from "react";
+import React, { useState } from "react";
 
-export default function Form() {
+export default function Form({ addData }) {
+  const [productName, setProductName] = useState("");
+  const [productcategory, setProductCategory] = useState("");
+  const [productImage, setProductImage] = useState("");
+  const [productFreshness, setProductFreshness] = useState("");
+  const [productDesc, setProductDesc] = useState("");
+  const [productPrice, setProductPrice] = useState("");
+  const specialchars = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/;
+
+  function handleValidation() {
+    if (productName.length == 0) {
+      alert("Product Name Field Can't be Empty");
+    } else if (productName.length > 25) {
+      alert("Product name must not exceed 25 character");
+    } else if (productName.match(specialchars)) {
+      alert("Prodcut name must not contain symbols");
+    } else if (productcategory.length == 0) {
+      alert("Product Category field must be filled in");
+    } else if (productImage.length == 0) {
+      alert("Product image field must be filled in");
+    } else if (productFreshness.length == 0) {
+      alert("Product freshness field must be filled in");
+    } else if (productDesc.length == 0) {
+      alert("Additional Description field must be filled in");
+    } else if (productPrice.length == 0) {
+      alert("Please enter a valid product price");
+    } else {
+      return true;
+    }
+  }
+
+  function handleSubmit(event) {
+    event.preventDefault();
+  
+    if (!handleValidation()) {
+      return;
+    }
+  
+    // Membuat objek data baru
+    const newData = {
+      productName: productName,
+      productCategory: productcategory,
+      productImage: productImage,
+      productFreshness: productFreshness,
+      productDesc: productDesc,
+      productPrice: productPrice,
+    };
+  
+    // Menambahkan data baru ke dalam tabel
+    const tableBody = document.getElementById("productTableBody");
+    const newRow = tableBody.insertRow();
+  
+    // Menambahkan data ke dalam sel-sel tabel
+    const cellIndex = newRow.insertCell(0);
+    const cellName = newRow.insertCell(1);
+    const cellCategory = newRow.insertCell(2);
+    const cellImage = newRow.insertCell(3);
+    const cellFreshness = newRow.insertCell(4);
+    const cellDescription = newRow.insertCell(5);
+    const cellPrice = newRow.insertCell(6);
+  
+    // Mengisi data ke dalam sel-sel tabel
+    cellIndex.innerHTML = tableBody.rows.length; // Nomor urut
+    cellName.innerHTML = productName;
+    cellCategory.innerHTML = productcategory;
+    cellImage.innerHTML = `<img src="${productImage}" alt="${productName}" width="50">`;
+    cellFreshness.innerHTML = productFreshness;
+    cellDescription.innerHTML = productDesc;
+    cellPrice.innerHTML = productPrice;
+  
+    // Mengosongkan formulir setelah data ditambahkan
+    setProductName("");
+    setProductCategory("");
+    setProductImage("");
+    setProductFreshness("");
+    setProductDesc("");
+    setProductPrice("");
+  
+    event.target.reset();
+  
+  
+  }
+
   return (
     <div>
       <div className="container ps-lg-5">
-        <form action="" id="formCreateProduct">
+        <form action="" id="formCreateProduct" onSubmit={handleSubmit}>
           <div className="fw-medium fs-3">Detail Product</div>
           <div className="mt-lg-4">
             <label htmlFor="" className="form-label">
@@ -15,6 +97,7 @@ export default function Form() {
               className="form-control"
               id="productName"
               style={{ width: 280 }}
+              onChange={(e) => setProductName(e.target.value)}
             />
           </div>
           <div className="mt-lg-5">
@@ -26,6 +109,7 @@ export default function Form() {
               name=""
               id="productCategory"
               style={{ width: 280 }}
+              onChange={(e) => setProductCategory(e.target.value)}
             >
               <option selected="" disabled="" value="">
                 Choose...
@@ -44,6 +128,7 @@ export default function Form() {
               type="file"
               id="formFile"
               style={{ width: 280 }}
+              onChange={(e) => setProductImage(e.target.value)}
             />
           </div>
           <div className="mt-3">
@@ -55,6 +140,7 @@ export default function Form() {
                   type="radio"
                   name="productStatus"
                   defaultValue="brandnew"
+                  onChange={(e) => setProductFreshness(e.target.value)}
                 />
                 Brand New
               </label>
@@ -65,6 +151,7 @@ export default function Form() {
                   type="radio"
                   name="productStatus"
                   defaultValue="secondhand"
+                  onChange={(e) => setProductFreshness(e.target.value)}
                 />
                 Second Hand
               </label>
@@ -75,6 +162,7 @@ export default function Form() {
                   type="radio"
                   name="productStatus"
                   defaultValue="refurbished"
+                  onChange={(e) => setProductFreshness(e.target.value)}
                 />
                 Refurbished
               </label>
@@ -90,6 +178,7 @@ export default function Form() {
               rows={5}
               placeholder="Description of the product"
               defaultValue={""}
+              onChange={(e) => setProductDesc(e.target.value)}
             />
           </div>
           <div className="mt-lg-5">
@@ -104,6 +193,7 @@ export default function Form() {
               id="productPrice"
               aria-label="Amount (to the nearest dollar)"
               placeholder="$"
+              onChange={(e) => setProductPrice(e.target.value)}
             />
           </div>
           <div className="d-flex justify-content-center mt-lg-5">
