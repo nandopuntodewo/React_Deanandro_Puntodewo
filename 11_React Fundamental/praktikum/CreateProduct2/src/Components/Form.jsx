@@ -11,21 +11,21 @@ export default function Form({ addData }) {
 
   function handleValidation() {
     if (productName.length == 0) {
-      alert("Product Name Field Can't be Empty");
+      alert("Harap masukkan nama produk yang valid");
     } else if (productName.length > 25) {
-      alert("Product name must not exceed 25 character");
+      alert("Nama produk tidak boleh lebih dari 25 karakter");
     } else if (productName.match(specialchars)) {
-      alert("Prodcut name must not contain symbols");
+      alert("Nama produk tidak boleh mengandung simbol");
     } else if (productcategory.length == 0) {
-      alert("Product Category field must be filled in");
+      alert("Kategori produk harus diisi");
     } else if (productImage.length == 0) {
-      alert("Product image field must be filled in");
+      alert("Kolom gambar produk harus diisi");
     } else if (productFreshness.length == 0) {
-      alert("Product freshness field must be filled in");
+      alert("Kolom kesegaran produk harus diisi");
     } else if (productDesc.length == 0) {
-      alert("Additional Description field must be filled in");
+      alert("Kolom Deskripsi Tambahan harus diisi");
     } else if (productPrice.length == 0) {
-      alert("Please enter a valid product price");
+      alert("Harap masukkan harga produk yang valid");
     } else {
       return true;
     }
