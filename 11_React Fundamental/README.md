@@ -1,4 +1,4 @@
-## React Fundamentals
+# React Fundamentals
 
 Ini adalah rangkuman singkat tentang beberapa konsep dasar dalam pengembangan aplikasi web dengan React. Silakan gunakan ini sebagai panduan awal kita dalam memahami dasar-dasar React.
 
