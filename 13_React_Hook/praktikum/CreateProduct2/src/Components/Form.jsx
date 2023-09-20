@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 export default function Form({ addData }) {
   const [productName, setProductName] = useState("");
@@ -10,6 +10,11 @@ export default function Form({ addData }) {
   const specialchars = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/;
 
   const [isProductNameValid, setIsProductNameValid] = useState(true);
+
+  const [tableData, SetTableData] = useState([]);
+  useEffect(() => {
+    alert("Welcome");
+  }, []);
 
   // State untuk menyimpan pesan kesalahan
   const [productNameError, setProductNameError] = useState("");
@@ -77,9 +82,8 @@ export default function Form({ addData }) {
 
     if (!handleValidation()) {
       return;
-    }
-    if (!isGenerateButtonClicked) {
-      // Membuat objek data baru
+    } else {
+      alert("form Submitted");
       const newData = {
         productName: productName,
         productCategory: productcategory,
@@ -89,29 +93,8 @@ export default function Form({ addData }) {
         productPrice: productPrice,
       };
 
-      // Menambahkan data baru ke dalam tabel
-      const tableBody = document.getElementById("productTableBody");
-      const newRow = tableBody.insertRow();
+      SetTableData([...tableData, newData]);
 
-      // Menambahkan data ke dalam sel-sel tabel
-      const cellIndex = newRow.insertCell(0);
-      const cellName = newRow.insertCell(1);
-      const cellCategory = newRow.insertCell(2);
-      const cellImage = newRow.insertCell(3);
-      const cellFreshness = newRow.insertCell(4);
-      const cellDescription = newRow.insertCell(5);
-      const cellPrice = newRow.insertCell(6);
-
-      // Mengisi data ke dalam sel-sel tabel
-      cellIndex.innerHTML = tableBody.rows.length; // Nomor urut
-      cellName.innerHTML = productName;
-      cellCategory.innerHTML = productcategory;
-      cellImage.innerHTML = `<img src="${productImage}" alt="${productName}" width="50">`;
-      cellFreshness.innerHTML = productFreshness;
-      cellDescription.innerHTML = productDesc;
-      cellPrice.innerHTML = productPrice;
-
-      // Mengosongkan formulir setelah data ditambahkan
       setProductName("");
       setProductCategory("");
       setProductImage("");
@@ -121,6 +104,11 @@ export default function Form({ addData }) {
 
       event.target.reset();
     }
+  }
+  function handleDelete(index) {
+    alert("Data Deleted");
+    const newData = tableData.filter((_, i) => i !== index);
+    SetTableData(newData);
   }
 
   return (
@@ -256,46 +244,40 @@ export default function Form({ addData }) {
               Generate Random Number
             </button>
           </div>
-          <div className="mt-lg-5">
-            <table className="table table-bordered">
+          <div className="container table mt-lg-5">
+            <table className="table table-striped-columns" id="tableinput">
               <thead>
                 <tr>
-                  <th>No</th>
-                  <th>Product Name</th>
-                  <th>Product Category</th>
-                  <th>Image of Product</th>
-                  <th>Product Freshness</th>
-                  <th>Additional Description</th>
-                  <th>Product Price</th>
+                  <th scope="col">No</th>
+                  <th scope="col">Product Name</th>
+                  <th scope="col">Product Category</th>
+                  <th scope="col">Product Freshness</th>
+                  <th scope="col">Product Price</th>
+                  <th scope="col">Action</th>
                 </tr>
               </thead>
-              <tbody id="productTableBody" />
+              <tbody>
+                {tableData.map((data, index) => (
+                  <tr key={index}>
+                    <td>{index + 1}</td>
+                    <td>{data.productName}</td>
+                    <td>{data.productCategory}</td>
+                    <td>{data.productFreshness}</td>
+                    <td>{data.productPrice}</td>
+                    <td>
+                      <button
+                        className="btn btn-danger btn-sm me-1"
+                        onClick={() => handleDelete(index)}
+                      >
+                        Delete
+                      </button>
+                      <button className="btn btn-primary btn-sm">Edit</button>
+                    </td>
+                  </tr>
+                ))}
+                ;
+              </tbody>
             </table>
-          </div>
-          {/* Search coloumn*/}
-          <div className="container mt-lg-5">
-            <div className="row">
-              <div className="col">
-                <input
-                  type="text"
-                  className="form-control"
-                  id="searchInput"
-                  placeholder="Search..."
-                />
-              </div>
-              {/* Tombol Search */}
-              <div className="col-auto">
-                <button className="btn btn-primary" id="searchButton">
-                  Search
-                </button>
-              </div>
-              <div className="col-auto">
-                {/* Tombol delete */}
-                <button className="btn btn-danger" id="deleteButton">
-                  Delete
-                </button>
-              </div>
-            </div>
           </div>
         </form>
       </div>
