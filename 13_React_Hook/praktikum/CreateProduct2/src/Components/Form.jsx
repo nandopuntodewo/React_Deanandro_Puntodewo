@@ -275,12 +275,11 @@ export default function Form({ addData }) {
                     </td>
                   </tr>
                 ))}
-                ;
               </tbody>
             </table>
           </div>
         </form>
       </div>
     </div>
-  );
+  )
 }
