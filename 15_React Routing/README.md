@@ -1,4 +1,4 @@
-# Rangkuman Mendalam Mengenai Routes, URL Params, dan Routing React
+# Rangkuman Mengenai Routes, URL Params, dan Routing React
 
 Dalam pengembangan aplikasi web dengan React, pengaturan navigasi antar halaman dan pengelolaan URL adalah aspek kunci yang mempengaruhi pengalaman pengguna. Di bawah ini, kita akan menjelajahi secara lebih mendalam tentang penggunaan routes, URL params, dan manajemen routing dalam konteks aplikasi React yang lebih besar.
 
