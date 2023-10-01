@@ -4,10 +4,9 @@ import { useParams } from "react-router-dom";
 
 function ProductDetail() {
   const { id } = useParams(); // Mendapatkan ID produk dari URL
-  const products = useSelector((state) => state.products); // Mengambil data produk dari Redux store
-
-  // Cari produk berdasarkan ID
-  const product = products.find((product) => product.id === id);
+  const product = useSelector((state) =>
+    state.products.find((product) => product.id === id)
+  );
 
   if (!product) {
     return <div>Product not found</div>;

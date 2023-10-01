@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Header from "../Components/Header";
 import Navbar from "../Components/Navbar";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
@@ -67,7 +67,7 @@ function Form() {
       productFreshnes: productToEdit.productFreshnes,
       productPrice: productToEdit.productPrice,
       image: productToEdit.image,
-      additionalDescription: productToEdit.additionalDescription,
+      additionalDescription: productToEdit.productDesc,
     });
     // Mengirim aksi Redux untuk mengedit produk
     dispatch(editProduct(index, productToEdit));
@@ -78,13 +78,24 @@ function Form() {
     if (editIndex !== null) {
       dispatch(editProduct(editIndex, data))
       setEditIndex(null);
+      
     } else {
-     
+      // const newProduct = {
+      //   id: uuidv4(), // Menghasilkan ID unik
+      //   productName: data.productName,
+      //   productCategory: data.productCategory,
+      //   productFreshnes:data.productFreshnes,
+      //   productPrice:data.productPrice,
+      //   image:data.image,
+      //   additionalDescription:data.additionalDescription,
+      // }
+
       dispatch(addProduct(data));
     }
     reset();
   };
- 
+  // dispatch(addProduct(data));
+  // reset()
   return (
     <>
       <Navbar />

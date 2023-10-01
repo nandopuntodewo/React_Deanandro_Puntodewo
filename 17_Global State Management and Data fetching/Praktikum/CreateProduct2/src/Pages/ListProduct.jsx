@@ -56,7 +56,7 @@ function ListProduct() {
               <td>{product.productCategory}</td>
               <td>{product.Imaget}</td>
               <td>{product.productFreshness}</td>
-              <td>{product.additionalDescription}</td>
+              <td>{product.productDesc}</td>
               <td>{product.productPrice}</td>
               <td>
                 <button
