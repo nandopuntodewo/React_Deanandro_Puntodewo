@@ -260,7 +260,7 @@ body, html {
 }
 
 .bg {
-  background-image: url("D:\KULIAH\ALTERRA\React_Deanandro_Puntodewo\19_Deployment\Praktikum\CreateProduct2\public\images\ramon-salinero-vEE00Hx5d0Q-unsplash.jpg");
+  background-image: url("images/ramon-salinero-vEE00Hx5d0Q-unsplash.jpg");
   filter: brightness(90%);
   background-size: 100%;
   background-position: center;
