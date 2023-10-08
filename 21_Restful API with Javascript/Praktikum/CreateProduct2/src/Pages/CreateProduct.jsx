@@ -126,6 +126,7 @@ export default function Form() {
           id="form"
           onSubmit={handleSubmit(onSubmit)}
           aria-label="product-form"
+          ref={formRef}
         >
           <div className="fw-medium fs-3">Detail Product</div>
           <div className="mt-lg-4">
