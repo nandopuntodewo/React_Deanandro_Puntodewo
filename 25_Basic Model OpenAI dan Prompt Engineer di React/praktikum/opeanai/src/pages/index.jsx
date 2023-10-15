@@ -18,8 +18,12 @@ export default function Index() {
       const response = await openai.chat.completions.create({
         model: "gpt-3.5-turbo",
         messages: [
-          {role: "system", content: "You are a helpfull asistant"},
-          { role: "user", content: prompt },
+          {
+            role: "user",
+            content:
+              "Create a question and answer system that responds to questions based on the given input text. Use the example text below as the input text. Translate the asnwer into the languange that the user input and start the answer with Question: fill with the user question and Answer: the answer of the question" +
+              prompt,
+          },
         ],
       });
       const choice = response.choices[0].message.content;
